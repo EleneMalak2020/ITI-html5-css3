@@ -15,8 +15,16 @@ let zipCode = document.getElementById("zip-code");
 form.addEventListener("submit", submit);
 showUsersBtn.addEventListener("click", showUsersTable);
 
+// Clear table data before showing new data.
+function clearTable(table) {
+    for (let i = 1; i < table.rows.length; i++) {
+        table.deleteRow(i);
+    }
+}
+
 function showUsersTable() {
     let table = document.getElementById("users-data");
+    clearTable(table);
 
     let data = localStorage.getItem("users")
     if (data === null) {
